@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
  * Created by mtumilowicz on 2019-02-17.
  */
 class SubTask extends Thread {
+    
     private final CyclicBarrier barrier;
     private final int id;
 
@@ -22,10 +23,8 @@ class SubTask extends Thread {
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(50) + 3);
             this.barrier.await();
             System.out.println("SubTask " + id + " passed the barrier.");
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | BrokenBarrierException e) {
             // not used
-        } catch (BrokenBarrierException e) {
-            System.out.println("Barrier broken!");
         }
     }
 }
