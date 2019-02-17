@@ -88,23 +88,23 @@ just before release
     ```
     can produce output
     ```
-    SubTask 1 is performing work
-    SubTask 3 is performing work
-    SubTask 0 is performing work
-    SubTask 2 is performing work
     SubTask 4 is performing work
+    SubTask 2 is performing work
+    SubTask 0 is performing work
+    SubTask 3 is performing work
+    SubTask 1 is performing work
     
-    SubTask 1 ended the work
-    SubTask 0 ended the work
-    SubTask 4 ended the work
-    SubTask 3 ended the work
-    SubTask 2 ended the work
+    SubTask 4 ended the work and is about to reach the barrier
+    SubTask 0 ended the work and is about to reach the barrier
+    SubTask 3 ended the work and is about to reach the barrier
+    SubTask 2 ended the work and is about to reach the barrier
+    SubTask 1 ended the work and is about to reach the barrier
     
     all subtasks arrive
     
     SubTask 0 passed the barrier
-    SubTask 4 passed the barrier
     SubTask 3 passed the barrier
-    SubTask 1 passed the barrier
     SubTask 2 passed the barrier
+    SubTask 4 passed the barrier
+    SubTask 1 passed the barrier
     ```
