@@ -20,5 +20,25 @@ just before release
     * `CyclicBarrier​(int parties, Runnable barrierAction)`
         * `barrierAction` - the command to execute when the barrier 
         is tripped
-
+* methods
+    * `int	await()`
+        * waits until all parties have invoked await on this 
+        barrier
+        * returns the arrival index of the current thread (countdown)
+        * `InterruptedException` if the current thread was 
+        interrupted while waiting
+        * `BrokenBarrierException`
+             *  if another thread was interrupted or timed out 
+             while the current thread was waiting
+             * the barrier was reset
+             * the barrier was broken when `await` was called
+             * the barrier action (if present) failed due to 
+             an exception
+* `int	await​(long timeout, TimeUnit unit)`
+* `int	getNumberWaiting()`
+* `int	getParties()`	
+* `boolean	isBroken()`
+* `void	reset()`
+    * if any parties are currently waiting at the barrier, 
+    they will return with a `BrokenBarrierException`
 # project description
