@@ -6,8 +6,7 @@
 arrives
 * use-case: split task to subtasks and combine the results when all
 are ready
-* situation where the required number of threads wait at the barrier, 
-is called **tripping the barrier**
+* **tripping the barrier** - situation where the required number of threads wait at the barrier
 
 # java
 * barrier in java is represented by `CyclicBarrier` class
