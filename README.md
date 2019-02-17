@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-concurrency-cyclicbarrier.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-concurrency-cyclicbarrier)
+
 # java11-concurrency-cyclicbarrier
 
 # preface
