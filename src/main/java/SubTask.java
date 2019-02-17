@@ -19,10 +19,11 @@ class SubTask extends Thread {
     @Override
     public void run() {
         try {
-            System.out.println("SubTask " + id + " is performing work.");
+            System.out.println("SubTask " + id + " is performing work");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(50) + 3);
+            System.out.println("SubTask " + id + " ended the work");
             this.barrier.await();
-            System.out.println("SubTask " + id + " passed the barrier.");
+            System.out.println("SubTask " + id + " passed the barrier");
         } catch (InterruptedException | BrokenBarrierException e) {
             // not used
         }
