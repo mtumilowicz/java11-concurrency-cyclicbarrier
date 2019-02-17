@@ -43,3 +43,68 @@ just before release
     they will return with a `BrokenBarrierException`
     
 # project description
+1. sub tasks
+    ```
+    class SubTask extends Thread {
+        
+        private final CyclicBarrier barrier;
+        private final int id;
+    
+        SubTask(CyclicBarrier barrier, int id) {
+            this.barrier = barrier;
+            this.id = id;
+        }
+    
+        @Override
+        public void run() {
+            try {
+                System.out.println("SubTask " + id + " is performing work");
+                TimeUnit.MILLISECONDS.sleep(new Random().nextInt(50) + 3);
+                System.out.println("SubTask " + id + " ended the work");
+                this.barrier.await();
+                System.out.println("SubTask " + id + " passed the barrier");
+            } catch (InterruptedException | BrokenBarrierException e) {
+                // not used
+            }
+        }
+    }
+    ```
+1. simulation
+    ```
+    Runnable barrierAction = () -> System.out.println("all subtasks arrive");
+    CyclicBarrier barrier = new CyclicBarrier(5, barrierAction);
+    
+    var threads = new LinkedList<Thread>();
+    
+    for (int i = 0; i < 5; i++) {
+        SubTask t = new SubTask(barrier, i);
+        t.start();
+        threads.add(t);
+    }
+    
+    for (Thread thread : threads) {
+        thread.join();
+    }
+    ```
+    can produce output
+    ```
+    SubTask 1 is performing work
+    SubTask 3 is performing work
+    SubTask 0 is performing work
+    SubTask 2 is performing work
+    SubTask 4 is performing work
+    
+    SubTask 1 ended the work
+    SubTask 0 ended the work
+    SubTask 4 ended the work
+    SubTask 3 ended the work
+    SubTask 2 ended the work
+    
+    all subtasks arrive
+    
+    SubTask 0 passed the barrier
+    SubTask 4 passed the barrier
+    SubTask 3 passed the barrier
+    SubTask 1 passed the barrier
+    SubTask 2 passed the barrier
+    ```
