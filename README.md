@@ -41,4 +41,5 @@ just before release
 * `void	reset()`
     * if any parties are currently waiting at the barrier, 
     they will return with a `BrokenBarrierException`
+    
 # project description
